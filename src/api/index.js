@@ -52,15 +52,17 @@ export const getProductById = async(id) => {
 
 //* REQUESTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export const createRequest = async() => {
+export const createRequest = async(products) => {
+  
   try {
     const resp = await apicall.post(`/request/`, {
+      products,
       user: "dilan"
     }); 
     return resp.data
   } catch (error) {
-    console.log(error);
-    throw new Error("Error")
+    const msg = error.response.data
+    throw new Error(msg)
   }
 }
 
@@ -79,8 +81,8 @@ export const getRequestCheck = async(id) => {
     const resp = await apicall.get(`/request/check/${id}`); 
     return resp.data
   } catch (error) {
-    console.log(error);
-    throw new Error("Error")
+    const msg = error.response.data.message
+    throw new Error(msg)
   }
 }
 

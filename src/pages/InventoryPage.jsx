@@ -98,6 +98,7 @@ const ModalAddProduct = ({ show, onHide, setProducts, setShowModalBuy, setSelect
       setRetailPrice("");
       onHide();
     } catch (error) {
+      enqueueSnackbar({ variant: "error", message: "No se pudo crear el producto" });
       console.log(error);
     }
   }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllRequest, getAllRequestByUser, getPayments } from "../api";
+import { getPayments } from "../api";
 import { Table } from "../components/Table"
 import { NavLink } from "react-router-dom";
+import { fDateDDMMYYYY } from "../helpers/dates";
 
 const headers = [
   "id:",
@@ -37,7 +38,7 @@ export const TicketsPage = () => {
       const parsedRequest = resp.map(item=> ({ 
         payment_id: item?.payment_id, 
         order_id: item?.order_id, 
-        delivery_date: item?.delivery_date,
+        delivery_date: fDateDDMMYYYY(item?.delivery_date) === "01-01-2000" ? "Fecha no asignada" : fDateDDMMYYYY(item?.delivery_date),
         total_amount: item?.total_amount,
         actions: <Actions payment_id={item?.payment_id} />,
       }));

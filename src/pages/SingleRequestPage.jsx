@@ -38,7 +38,7 @@ export const SingleRequestsPage = () => {
       enqueueSnackbar({ variant: "success", message: "Hay suficiente inventario" });
       setIsAviable(true);
     } catch (error) {
-      console.log(error); 
+      enqueueSnackbar({ variant: "error", message: error.message });
     }
   }
 

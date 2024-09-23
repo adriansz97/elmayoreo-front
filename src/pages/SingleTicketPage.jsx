@@ -36,9 +36,9 @@ export const SingleTicketPage = () => {
 
   const handleUpdateDate = async() => {
     try {
-      const resp = await updateDeliveyDate(id, deliveryDate);
+      await updateDeliveyDate(id, deliveryDate);
       enqueueSnackbar({ variant: "success", message: "Fecha actualizada" });
-      setPayment({ delivery_date: deliveryDate, ...payment })
+      setPayment({ ...payment, delivery_date: deliveryDate })
     } catch (error) {
       console.log(error);
     }

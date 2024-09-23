@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllRequest, getAllRequestByUser } from "../api";
 import { Table } from "../components/Table"
 import { NavLink } from "react-router-dom";
+import { ModalSimulateRequest } from "../components/ModalSimulateRequest";
 
 const headers = [
   "id:",
@@ -28,6 +29,7 @@ const Actions = ({ order_id }) => {
 export const RequestsPage = () => {
 
   const [requests, setRequests] = useState([]);
+  const [showModalSimulateRequest, setShowModalSimulateRequest] = useState(false);
 
   useEffect(() => {
     getAllRequest()
@@ -44,24 +46,39 @@ export const RequestsPage = () => {
     .catch(console.log);
   }, []);
 
-
   return (
-    <div className="max-w-screen-xl mx-auto px-4">
+    <>
+      <ModalSimulateRequest
+        show={showModalSimulateRequest}
+        onHide={()=>setShowModalSimulateRequest(false)}
+        Actions={Actions}
+        setRequests={setRequests}
+      />
+      <div className="max-w-screen-xl mx-auto px-4">
 
-      {/* Header */}
-      <div className="items-start justify-between md:flex">
-        <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
-            Solicitudes
-          </h3>
+        {/* Header */}
+        <div className="items-start justify-between md:flex">
+          <div className="max-w-lg">
+            <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
+              Solicitudes
+            </h3>
+          </div>
+          <div className="mt-3 md:mt-0">
+              <button
+                className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm"
+                onClick={()=>setShowModalSimulateRequest(true)}
+              >
+                Simular solicitud
+              </button>
+            </div>
         </div>
-      </div>
 
-      {/* Tabla */}
-      <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-        <Table headers={headers} keys={keys} items={requests} />
-      </div>
+        {/* Tabla */}
+        <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+          <Table headers={headers} keys={keys} items={requests} />
+        </div>
 
-    </div>
+      </div>
+    </>
   )
 }
