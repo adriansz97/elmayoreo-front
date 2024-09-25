@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { startLogin } from "../store/auth/authThunks";
 import { useNavigate } from "react-router-dom";
-
-
+import { startLogin } from "../../store/auth/authThunks";
 
 export const LoginPage = () => {
 

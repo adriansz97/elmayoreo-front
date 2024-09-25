@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPayments } from "../api";
-import { Table } from "../components/Table"
 import { NavLink } from "react-router-dom";
-import { fDateDDMMYYYY } from "../helpers/dates";
+import { getPayments } from "../../api";
+import { fDateDDMMYYYY } from "../../helpers/dates";
+import { Header, Table } from "../../components"
 
 const headers = [
   "id:",
@@ -28,7 +28,7 @@ const Actions = ({ payment_id }) => {
   )
 }
 
-export const TicketsPage = () => {
+export const PaymentsPage = () => {
 
   const [requests, setRequests] = useState([]);
 
@@ -53,11 +53,7 @@ export const TicketsPage = () => {
 
       {/* Header */}
       <div className="items-start justify-between md:flex">
-        <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
-            Pagos
-          </h3>
-        </div>
+        <Header>Tickets</Header>
       </div>
 
       {/* Tabla */}

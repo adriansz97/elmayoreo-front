@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { acceptRequest, createPayment, getAllRequest, getProductById, getRequestCheck, getRequestInfo } from "../api";
-import { Table } from "../components/Table"
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import { acceptRequest, createPayment, getRequestCheck, getRequestInfo } from "../../api";
+import { Table } from "../../components"
 
 const headers = [
   "Nombre:",

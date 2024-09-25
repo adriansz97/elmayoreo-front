@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllRequest, getAllRequestByUser } from "../api";
-import { Table } from "../components/Table"
 import { NavLink } from "react-router-dom";
-import { ModalSimulateRequest } from "../components/ModalSimulateRequest";
+import { getAllRequest } from "../../api";
+import { Button, Header, Table } from "../../components"
+import { ModalSimulateRequest } from "./ModalSimulateRequest";
 
 const headers = [
   "id:",
@@ -54,23 +54,17 @@ export const RequestsPage = () => {
         Actions={Actions}
         setRequests={setRequests}
       />
+
       <div className="max-w-screen-xl mx-auto px-4">
 
         {/* Header */}
-        <div className="items-start justify-between md:flex">
-          <div className="max-w-lg">
-            <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
-              Solicitudes
-            </h3>
-          </div>
-          <div className="mt-3 md:mt-0">
-              <button
-                className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm"
-                onClick={()=>setShowModalSimulateRequest(true)}
-              >
-                Simular solicitud
-              </button>
-            </div>
+        <div className="items-start justify-between sm:flex">
+          <Header>Solicitudes</Header>
+          <Button 
+            label="Simular solicitud"
+            onClick={()=>setShowModalSimulateRequest(true)}
+            className="mt-3 w-full sm:w-auto sm:mt-0"
+          />
         </div>
 
         {/* Tabla */}
@@ -79,6 +73,7 @@ export const RequestsPage = () => {
         </div>
 
       </div>
+      
     </>
   )
 }

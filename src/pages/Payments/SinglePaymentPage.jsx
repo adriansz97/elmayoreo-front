@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPaymentById, updateDeliveyDate  } from "../api";
 import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
-import { Input } from "../components/Input";
+import { getPaymentById, updateDeliveyDate  } from "../../api";
+import { Input } from "../../components/Input";
 
 const defaultDay = "2000-01-01"
 
@@ -14,7 +14,7 @@ function formatDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-export const SingleTicketPage = () => {
+export const SinglePaymentPage = () => {
 
   const { id } = useParams();
   const [payment, setPayment] = useState(null);

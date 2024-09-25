@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Modal } from "./Modal"
-import { createRequest, getProducts } from '../api';
-import { Select } from './Select';
-import { Input } from './Input';
-import { Button } from './Button';
 import { enqueueSnackbar } from 'notistack';
-
+import { createRequest, getProducts } from '../../api';
+import {  Button, Input, Modal, Select } from "../../components"
 
 export const ModalSimulateRequest = ({ show, onHide, setRequests, Actions }) => {
   const [products, setProducts] = useState([]);
