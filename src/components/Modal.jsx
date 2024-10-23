@@ -9,7 +9,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: "30%"
+    width: "50%"
   },
 };
 
@@ -17,26 +17,12 @@ const customStyles = {
 ReactModal.setAppElement('#root');
 
 export const Modal = ({ show = false, onHide = ()=>{}, closeButton = true, children }) => {
-  let subtitle;
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div>
       <ReactModal
         isOpen={show}
-        onAfterOpen={afterOpenModal}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={onHide}
         style={customStyles}
         contentLabel="Example Modal"

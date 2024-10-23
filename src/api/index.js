@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = "http://127.0.0.1:8080"
-// const host = "https://fb3hgh7x-8080.usw3.devtunnels.ms/"
+// const host = "http://127.0.0.1:8080"
+const host = "https://fb3hgh7x-8080.usw3.devtunnels.ms/"
 
 const apicall = axios.create({ 
   baseURL: host
@@ -29,9 +29,9 @@ export const getProducts = async() => {
   }
 }
 
-export const addInventoryQty = async(product_id, qty) => {
+export const addInventoryQty = async(product_id, qty, amount) => {
   try {
-    const resp = await apicall.put(`/products/add-qty`, { product_id, qty }); 
+    const resp = await apicall.put(`/products/add-qty`, { product_id, qty, amount }); 
     return resp.data
   } catch (error) {
     console.log(error);
@@ -152,6 +152,28 @@ export const updateDeliveyDate = async(payment_id, delivery_date) => {
   console.log(payment_id, delivery_date);
   try {
     const resp = await apicall.put(`/payment/update-delivery/`, { payment_id, delivery_date }); 
+    return resp.data
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error")
+  }
+}
+
+//* REPORTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const getReport = async(startDate, endDate) => {
+  try {
+    const resp = await apicall.get(`/report?startDate=${startDate}&endDate=${endDate}`); 
+    return resp.data
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error")
+  }
+}
+
+export const getOutlays = async(startDate, endDate) => {
+  try {
+    const resp = await apicall.get(`/outlays?startDate=${startDate}&endDate=${endDate}`); 
     return resp.data
   } catch (error) {
     console.log(error);

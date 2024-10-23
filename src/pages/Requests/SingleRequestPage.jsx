@@ -25,6 +25,7 @@ export const SingleRequestsPage = () => {
   useEffect(() => {
     getRequestInfo(id)
     .then(resp => {
+      console.log(resp);
       setTotalAmount(resp?.total_amount);
       setItems(resp?.items);
       setStatus(resp?.status);
@@ -96,6 +97,10 @@ export const SingleRequestsPage = () => {
 
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto mb-4">
         <Table headers={headers} keys={keys} items={items} />
+      </div>
+
+      <div>
+        <span className="font-bold text-lg">Total: ${totalAmount}</span>
       </div>
 
       {

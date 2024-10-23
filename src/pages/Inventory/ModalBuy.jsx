@@ -6,11 +6,12 @@ import { Input, Modal } from "../../components";
 export const ModalBuy = ({ show, onHide, setProducts, selectedPrductToBuy }) => {
 
   const [quantity, setQuantity] = useState("");
+  const [amount, setAmount] = useState("");
 
   const handleBuy = async(e) => {
     e.preventDefault();
     try {
-      await addInventoryQty(selectedPrductToBuy.id, Number(quantity));
+      await addInventoryQty(selectedPrductToBuy.id, Number(quantity), amount);
       enqueueSnackbar({ variant: "success", message: "Actualizado" });
       setProducts(pvProducts=>{
         const newProducts = pvProducts.map(prod => prod.id !== selectedPrductToBuy.id ? prod : { ...prod, qty: prod.qty + Number(quantity)} );
@@ -33,6 +34,13 @@ export const ModalBuy = ({ show, onHide, setProducts, selectedPrductToBuy }) => 
           value={quantity} 
           onChange={(e)=>setQuantity(e.target.value)} 
           label="Cantidad"
+        />
+        <Input 
+          id="amount"
+          type="number" 
+          value={amount} 
+          onChange={(e)=>setAmount(e.target.value)} 
+          label="Monto"
         />
         <button
           className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm w-full"

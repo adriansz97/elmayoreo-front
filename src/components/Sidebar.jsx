@@ -4,6 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const sections = [
   { name: "Dashbard", path: "/" },
+  { name: "Reportes", path: "/reports" },
   { name: "Inventario", path: "/inventory" },
   { name: "Solicitudes", path: "/requests" },
   { name: "Tickets", path: "/tickets" },

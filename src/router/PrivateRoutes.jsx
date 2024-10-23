@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { DashboardPage, InventoryPage, PaymentsPage, RequestsPage, SinglePaymentPage, SingleRequestsPage } from "../pages";
 import { Sidebar } from "../components";
+import { ReportsPage } from "../pages/Reports/ReportsPage";
 
 export const PrivateRoutes = () => {
 
@@ -23,6 +24,7 @@ export const PrivateRoutes = () => {
           <div className="px-12 py-12 md:w-9/12 overflow-auto">
             <Routes>
               <Route path="/" element={ <DashboardPage /> } />
+              <Route path="/reports" element={ <ReportsPage /> } />
               <Route path="/inventory" element={ <InventoryPage /> } />
               <Route path="/requests" element={ <RequestsPage /> } />
               <Route path="/request/:id" element={ <SingleRequestsPage /> } />
